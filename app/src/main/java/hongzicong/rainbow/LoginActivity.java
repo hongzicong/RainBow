@@ -57,6 +57,7 @@ public class LoginActivity extends AppCompatActivity {
         password=(EditText)findViewById(R.id.password);
         login=(Button)findViewById(R.id.login);
         register=(Button)findViewById(R.id.register);
+        name.setText(getUserName());
     }
 
     private void setAllClickListener(){
@@ -65,6 +66,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(isConnectToInternet()){
                     if(isValidName()){
+                        saveUserName();
                         goToMainActivity();
                         //完成服务器端才开启以下登陆功能
                         /*
@@ -161,6 +163,18 @@ public class LoginActivity extends AppCompatActivity {
     private void goToRegisterActivity(){
         Intent intent=new Intent(LoginActivity.this,RegisterAcitvity.class);
         startActivity(intent);
+    }
+
+    private void saveUserName(){
+        SharedPreferences.Editor editor=getSharedPreferences("data",MODE_PRIVATE).edit();
+        editor.putString("name",name.getText().toString());
+        editor.apply();
+    }
+
+    private String getUserName(){
+        SharedPreferences pref=getSharedPreferences("data",MODE_PRIVATE);
+        String name=pref.getString("name","");
+        return name;
     }
 
 }
