@@ -3,9 +3,10 @@ package hongzicong.rainbow;
 import java.util.List;
 import java.util.ArrayList;
 
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
+import android.view.*;
 import android.widget.*;
 import android.os.Handler;
 import android.net.ConnectivityManager;
@@ -22,6 +23,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText name;
     private EditText password;
     private Button login;
+    private Button forget;
     private Button register;
     private Handler handler;
     private Dialog  dialog;
@@ -31,6 +33,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        ((ConstraintLayout)findViewById(R.id.login_layout)).setSystemUiVisibility(View.INVISIBLE);
         initWidget();
         actionBar=getSupportActionBar();
         if(actionBar!=null){
@@ -58,6 +61,7 @@ public class LoginActivity extends AppCompatActivity {
         login=(Button)findViewById(R.id.login);
         register=(Button)findViewById(R.id.register);
         name.setText(getUserName());
+        forget=(Button)findViewById(R.id.forget_password);
     }
 
     private void setAllClickListener(){
@@ -68,7 +72,7 @@ public class LoginActivity extends AppCompatActivity {
                     if(isValidName()){
                         saveUserName();
                         goToMainActivity();
-                        //完成服务器端才开启以下登陆功能
+                        //Todo 完成服务器端才开启以下登陆功能
                         /*
                         dialog=new Dialog(LoginActivity.this);
                         dialog.setTitle("少女祈祷中...");
@@ -89,6 +93,12 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 goToRegisterActivity();
+            }
+        });
+        forget.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                //Todo 找回密码系统
             }
         });
     }
@@ -150,7 +160,7 @@ public class LoginActivity extends AppCompatActivity {
 
     //判断是否为学生邮箱
     private boolean isStudentEmail(String email){
-        //todo
+        //todo 学正则表达式
         return true;
     }
 
