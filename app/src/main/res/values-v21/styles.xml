@@ -21,4 +21,9 @@
         <item name="android:colorControlActivated">@android:color/white</item>
     </style>
 
+    <style name="my_textlayout">
+        <item name="android:textColor">#a5dee4</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
 </resources>

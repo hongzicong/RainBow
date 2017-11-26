@@ -26,8 +26,6 @@ public class MainActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private BottomNavigationBar bottomNavigationBar;
 
-    private TextView textView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
         initAllWidget();
         setAllListener();
         setMyActionBar();
-        Log.d("MainActivityHaHa",getStatusBarHeight()+" ");
     }
 
     private void initAllWidget(){
@@ -57,24 +54,16 @@ public class MainActivity extends AppCompatActivity {
         navigationView=(NavigationView)findViewById(R.id.nav_view);
         bottomNavigationBar=(BottomNavigationBar)findViewById(R.id.bottom_navigation_bar);
 
-        //Test
-        textView=(TextView)findViewById(R.id.test_textView);
-        textView.setText("AppbarLayout继承自LinearLayout,它就是一个垂直方向的LinearLayout,在LinearLayout的基础上添加了一些材料设计的概念和特性，即滑动手势。它可以让你定制在某个可滑动的View（如：ScrollView ,ListView ,RecyclerView 等）滑动手势发生改变时，内部的子View 该做什么动作。子View应该提供滑动时他们期望的响应的动作Behavior,通过setScrollFlags(int)，或者xml 中使用属性：\n" +
-                "\n" +
-                "作者：依然范特稀西\n" +
-                "链接：http://www.jianshu.com/p/ac56f11e7ce1\n" +
-                "來源：简书\n" +
-                "著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。");
-        textView.setTextSize(40);
-
         navigationView.setCheckedItem(R.id.nav_main);
 
         tabLayout.addTab(tabLayout.newTab().setText("专家"));
         tabLayout.addTab(tabLayout.newTab().setText("我"));
 
-        bottomNavigationBar.addItem(new BottomNavigationItem(R.drawable.math,"首页"))
-                .addItem(new BottomNavigationItem(R.drawable.math,"技能树"))
-                .addItem(new BottomNavigationItem(R.drawable.math,"通知"))
+        bottomNavigationBar.setMode(BottomNavigationBar.MODE_SHIFTING);
+        bottomNavigationBar.setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_RIPPLE);
+        bottomNavigationBar.addItem(new BottomNavigationItem(R.drawable.share_icon,"首页").setActiveColorResource(R.color.share_color))
+                .addItem(new BottomNavigationItem(R.drawable.skill_tree_icon,"技能树").setActiveColorResource(R.color.skill_tree_color))
+                .addItem(new BottomNavigationItem(R.drawable.notifi_icon,"通知").setActiveColorResource(R.color.notifi_color))
                 .setFirstSelectedPosition(1)
                 .initialise();
     }

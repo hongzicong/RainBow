@@ -6,5 +6,5 @@
     <dimen name="nav_header_height">160dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="toolbar_padding_top">0dp</dimen>
-    <dimen name="tab_height">30dp</dimen>
+    <dimen name="tab_height">40dp</dimen>
 </resources>
