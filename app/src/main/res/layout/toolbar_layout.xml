@@ -5,12 +5,10 @@
     android:gravity="top"
     android:id="@+id/toolbar"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:minHeight="?attr/actionBarSize"
+    android:layout_height="?attr/actionBarSize"
 
     android:paddingTop="@dimen/toolbar_padding_top"
     android:background="?attr/colorPrimary"
-    android:layout_gravity="top"
     app:popupTheme="@style/AppTheme.PopupOverlay"
     android:fitsSystemWindows="true">
 
