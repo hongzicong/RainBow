@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
 
-    <include layout="@layout/main_window"/>
+    <include layout="@layout/main_window" />
 
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
