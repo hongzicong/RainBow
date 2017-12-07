@@ -17,4 +17,13 @@ public class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
     }
 
+    //初始化toolBar
+    protected void initActionBar(){
+        ActionBar actionBar=getSupportActionBar();
+        if(actionBar!=null){
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+        actionBar.setDisplayShowTitleEnabled(false);
+    }
+
 }
