@@ -1,4 +1,4 @@
-package hongzicong.rainbow;
+package hongzicong.rainbow.activity;
 
 import android.app.Dialog;
 import android.content.ContentValues;
@@ -20,6 +20,9 @@ import android.widget.Toast;
 
 import java.util.List;
 import java.util.ArrayList;
+
+import hongzicong.rainbow.R;
+import hongzicong.rainbow.net.RegisterService;
 
 
 public class RegisterAcitvity extends AppCompatActivity {

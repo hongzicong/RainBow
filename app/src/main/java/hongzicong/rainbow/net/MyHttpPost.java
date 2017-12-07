@@ -1,4 +1,4 @@
-package hongzicong.rainbow;
+package hongzicong.rainbow.net;
 
 import java.util.List;
 import java.net.URL;

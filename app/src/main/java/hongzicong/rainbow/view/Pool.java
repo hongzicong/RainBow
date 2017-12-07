@@ -1,4 +1,4 @@
-package hongzicong.rainbow;
+package hongzicong.rainbow.view;
 
 import java.util.List;
 

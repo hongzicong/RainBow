@@ -1,4 +1,4 @@
-package hongzicong.rainbow;
+package hongzicong.rainbow.activity;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -18,6 +18,9 @@ import android.os.Message;
 import android.text.TextUtils;
 import android.support.v7.app.ActionBar;
 
+import hongzicong.rainbow.net.LoginPostService;
+import hongzicong.rainbow.R;
+
 public class LoginActivity extends AppCompatActivity {
 
     private EditText name;
@@ -35,10 +38,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         ((ConstraintLayout)findViewById(R.id.login_layout)).setSystemUiVisibility(View.INVISIBLE);
         initWidget();
-        actionBar=getSupportActionBar();
-        if(actionBar!=null){
-            actionBar.hide();
-        }
+        hideBar();
         setAllClickListener();
         handler=new Handler(){
             public void handleMessage(Message msg){
@@ -46,13 +46,20 @@ public class LoginActivity extends AppCompatActivity {
                 dialog.dismiss();
                 if(msg.what==111){
                     if(msg.obj.toString().equals("SUCCEEDED")){
-                        Toast.makeText(LoginActivity.this,"登陆成功！但是后面的还没做！",Toast.LENGTH_SHORT).show();
+                        goToHomeActivity();
                     }else{
                         Toast.makeText(LoginActivity.this,"账户不存在或者密码错误！！！",Toast.LENGTH_SHORT).show();
                     }
                 }
             }
         };
+    }
+
+    private void hideBar(){
+        actionBar=getSupportActionBar();
+        if(actionBar!=null){
+            actionBar.hide();
+        }
     }
 
     private void initWidget(){
@@ -71,7 +78,7 @@ public class LoginActivity extends AppCompatActivity {
                 if(isConnectToInternet()){
                     if(isValidName()){
                         saveUserName();
-                        goToMainActivity();
+                        goToHomeActivity();
                         //Todo 完成服务器端才开启以下登陆功能
                         /*
                         dialog=new Dialog(LoginActivity.this);
@@ -165,23 +172,26 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     //登陆成功，去往主页面
-    private void goToMainActivity(){
-        Intent intent=new Intent(LoginActivity.this,MainActivity.class);
+    private void goToHomeActivity(){
+        Intent intent=new Intent(LoginActivity.this,HomeActivity.class);
         startActivity(intent);
     }
 
     private void goToRegisterActivity(){
+        //todo 改成左右滑动的好不好
         Intent intent=new Intent(LoginActivity.this,RegisterAcitvity.class);
         startActivity(intent);
     }
 
     private void saveUserName(){
+        //todo 要不要存进数据库
         SharedPreferences.Editor editor=getSharedPreferences("data",MODE_PRIVATE).edit();
         editor.putString("name",name.getText().toString());
         editor.apply();
     }
 
     private String getUserName(){
+        //todo 要不要从数据库中取出来
         SharedPreferences pref=getSharedPreferences("data",MODE_PRIVATE);
         String name=pref.getString("name","");
         return name;

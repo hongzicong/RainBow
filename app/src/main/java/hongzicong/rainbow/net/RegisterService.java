@@ -1,9 +1,11 @@
-package hongzicong.rainbow;
+package hongzicong.rainbow.net;
 
 import android.content.ContentValues;
 import android.util.Log;
 
 import java.util.List;
+
+import hongzicong.rainbow.net.MyHttpPost;
 
 /**
  * Created by DELL-PC on 2017/11/4.
@@ -11,8 +13,8 @@ import java.util.List;
 
 public class RegisterService {
 
-    static int REGISTER_FAILED=0;
-    static int REGISTER_SUCCEEDED=1;
+    public static int REGISTER_FAILED=0;
+    public static int REGISTER_SUCCEEDED=1;
 
     public static int send(List<ContentValues> params){
         int responseInt=REGISTER_FAILED;

@@ -3,7 +3,14 @@
     <color name="colorPrimary">#808F7C</color>
     <color name="colorPrimaryDark">#6A8372</color>
     <color name="colorAccent">#FF4081</color>
+
     <color name="skill_tree_color">#91AD70</color>
+    <color name="skill_tree_colorDark">#91AD70</color>
+
     <color name="share_color">#E87A90</color>
-    <color name="notifi_color">#81C7D4</color>
+    <color name="share_colorDark">#E87A90</color>
+
+    <color name="notify_color">#81C7D4</color>
+    <color name="notify_colorDark">#81C7D4</color>
+
 </resources>

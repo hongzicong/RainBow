@@ -1,9 +1,11 @@
-package hongzicong.rainbow;
+package hongzicong.rainbow.net;
 
 import java.util.List;
 
 import android.content.ContentValues;
 import android.util.Log;
+
+import hongzicong.rainbow.net.MyHttpPost;
 
 /**
  * Created by DELL-PC on 2017/11/4.
@@ -11,8 +13,8 @@ import android.util.Log;
 
 public class LoginPostService {
 
-    static int LOGIN_FAILED=0;
-    static int LOGIN_SUCCEEDED=1;
+    public static int LOGIN_FAILED=0;
+    public static int LOGIN_SUCCEEDED=1;
 
     public static int send(List<ContentValues> params){
         int responseInt=LOGIN_FAILED;
