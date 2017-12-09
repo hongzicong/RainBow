@@ -11,12 +11,32 @@ public class ShareData {
     private String mTitle;
     private String mTag;
     private String mShortIntro;
+    private int mFavourNum;
+    private int mCommentNum;
 
-    public ShareData(User user, String title, String tag, String shortIntro) {
+    public int getFavourNum() {
+        return mFavourNum;
+    }
+
+    public void setFavourNum(int favourNum) {
+        mFavourNum = favourNum;
+    }
+
+    public int getCommentNum() {
+        return mCommentNum;
+    }
+
+    public void setCommentNum(int commentNum) {
+        mCommentNum = commentNum;
+    }
+
+    public ShareData(User user, String title, String tag, String shortIntro, int favourNum, int commentNum) {
         mUser = user;
         mTitle = title;
         mTag = tag;
         mShortIntro = shortIntro;
+        mCommentNum=commentNum;
+        mFavourNum=favourNum;
     }
 
     public String getTag() {
