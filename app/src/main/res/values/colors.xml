@@ -13,4 +13,8 @@
     <color name="notify_color">#81C7D4</color>
     <color name="notify_colorDark">#81C7D4</color>
 
+    <color name="refresh_progress_1">#91AD70</color>
+    <color name="refresh_progress_2">#E87A90</color>
+    <color name="refresh_progress_3">#81C7D4</color>
+
 </resources>
