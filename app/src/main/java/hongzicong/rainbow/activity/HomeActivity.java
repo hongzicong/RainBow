@@ -97,13 +97,14 @@ public class HomeActivity extends AppCompatActivity {
 
     //初始化底部导航栏
     protected void initBottomNavigationBar(){
-        bottomNavigationBar.setMode(BottomNavigationBar.MODE_SHIFTING);
-        bottomNavigationBar.setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_RIPPLE);
+        bottomNavigationBar.setMode(BottomNavigationBar.MODE_FIXED);
+        bottomNavigationBar.setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC);
         bottomNavigationBar.addItem(new BottomNavigationItem(R.drawable.share_icon,"首页").setActiveColorResource(R.color.share_color))
                 .addItem(new BottomNavigationItem(R.drawable.skill_tree_icon,"技能树").setActiveColorResource(R.color.skill_tree_color))
                 .addItem(new BottomNavigationItem(R.drawable.notifi_icon,"通知").setActiveColorResource(R.color.notify_color))
                 .setFirstSelectedPosition(1)
                 .initialise();
+        bottomNavigationBar.setAutoHideEnabled(false);
         bottomNavigationBar.setTabSelectedListener(new BottomNavigationBar.OnTabSelectedListener(){
             @Override
             public void onTabSelected(int position) {

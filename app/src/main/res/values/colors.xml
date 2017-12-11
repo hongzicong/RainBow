@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#808F7C</color>
-    <color name="colorPrimaryDark">#6A8372</color>
+    <color name="colorPrimary">#81C7D4</color>
+    <color name="colorPrimaryDark">#81C7D4</color>
     <color name="colorAccent">#FF4081</color>
 
     <color name="skill_tree_color">#91AD70</color>
@@ -16,5 +16,7 @@
     <color name="refresh_progress_1">#91AD70</color>
     <color name="refresh_progress_2">#E87A90</color>
     <color name="refresh_progress_3">#81C7D4</color>
+
+    <color name="background">#D7C4BB</color>
 
 </resources>

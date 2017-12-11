@@ -14,7 +14,7 @@ public class NotifyFragment extends Fragment {
     private class NotifyHolder extends RecyclerView.ViewHolder{
 
         public NotifyHolder(LayoutInflater inflater,ViewGroup parent){
-            super(inflater.inflate(R.layout.list_share_item,parent,false));
+            super(inflater.inflate(R.layout.list_share_now_bottom_item,parent,false));
         }
 
     }

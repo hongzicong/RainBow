@@ -9,13 +9,15 @@
     <FrameLayout
         android:id="@+id/member_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="true"></FrameLayout>
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true">
+    </FrameLayout>
 
     <com.ashokvarma.bottomnavigation.BottomNavigationBar
         android:id="@+id/bottom_navigation_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"/>
+        android:layout_gravity="bottom"
+        android:fitsSystemWindows="true"/>
 
 </android.support.design.widget.CoordinatorLayout>

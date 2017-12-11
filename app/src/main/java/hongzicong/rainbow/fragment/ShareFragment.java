@@ -10,8 +10,10 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,6 +41,9 @@ public class ShareFragment extends Fragment {
     @BindView(R.id.view_pager_share)
     ViewPager mViewPager;
 
+    @BindView(R.id.toolbar_share)
+    Toolbar mToolbar;
+
     private List<Fragment> mFragments;
     private List<String> mTitles;
     private PagerAdapter mPagerAdapter;
@@ -59,6 +64,9 @@ public class ShareFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v=inflater.inflate(R.layout.fragment_share,container,false);
         mUnbinder=ButterKnife.bind(this,v);
+
+        ((AppCompatActivity)getActivity()).setSupportActionBar(mToolbar);
+
         return v;
     }
 
