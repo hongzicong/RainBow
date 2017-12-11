@@ -62,7 +62,7 @@ public class ShareNowAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         LayoutInflater layoutInflater=LayoutInflater.from(parent.getContext());
         if(viewType==TYPE_TOP){
             View itemView=layoutInflater.inflate(R.layout.list_share_now_top_item,parent,false);
-            return new ShareNowTopHolder(layoutInflater,parent);
+            return new ShareNowTopHolder(layoutInflater,parent,mContext);
         }
         else if(viewType==TYPE_CENTER){
             View itemView=layoutInflater.inflate(R.layout.list_share_now_center_item,parent,false);
@@ -83,8 +83,6 @@ public class ShareNowAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public int getItemCount() {
         return 2+mShareDatas.size();
     }
-
-
 
 }
 
