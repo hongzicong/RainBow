@@ -15,7 +15,7 @@ import hongzicong.rainbow.model.ShareData;
 /**
  * Created by DELL-PC on 2017/12/11.
  */
-public class ShareHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+public class ShareBottomHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
     @BindView(R.id.title_text)
     TextView title;
@@ -37,7 +37,7 @@ public class ShareHolder extends RecyclerView.ViewHolder implements View.OnClick
 
     private ShareData mShareData;
 
-    public ShareHolder(LayoutInflater inflater, ViewGroup parent,ShareData shareData){
+    public ShareBottomHolder(LayoutInflater inflater, ViewGroup parent, ShareData shareData){
         super(inflater.inflate(R.layout.list_share_now_bottom_item,parent,false));
         ButterKnife.bind(this,itemView);
         mShareData=shareData;

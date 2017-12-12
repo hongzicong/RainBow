@@ -70,7 +70,7 @@ public class ShareNowAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         }
         else{
             View itemView = layoutInflater.inflate(R.layout.list_share_now_bottom_item, parent, false);
-            return new ShareHolder(layoutInflater,parent,mShareDatas.get(viewType-2));
+            return new ShareBottomHolder(layoutInflater,parent,mShareDatas.get(viewType-2));
         }
     }
 
