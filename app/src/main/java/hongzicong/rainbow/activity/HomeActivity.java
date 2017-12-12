@@ -44,12 +44,14 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        WindowManager.LayoutParams localLayoutParams = getWindow().getAttributes();
+        localLayoutParams.flags = (WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | localLayoutParams.flags);
+
         ButterKnife.bind(this);
 
         initBottomNavigationBar();
         initFragmentManager();
         initNavigationView();
-        setDeep();
     }
 
     private void initNavigationView(){
@@ -73,19 +75,6 @@ public class HomeActivity extends AppCompatActivity {
         return true;
     }
 
-    //沉浸式设计
-    protected void setDeep(){
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            WindowManager.LayoutParams localLayoutParams = getWindow().getAttributes();
-            localLayoutParams.flags = (WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | localLayoutParams.flags);
-            if(Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP){
-                //将侧边栏顶部延伸至status bar
-                mDrawerLayout.setFitsSystemWindows(true);
-                //将主页面顶部延伸至status bar;虽默认为false,但经测试,DrawerLayout需显示设置
-                mDrawerLayout.setClipToPadding(false);
-            }
-        }
-    }
 
     private void initFragmentManager(){
         mFragmentManager=this.getSupportFragmentManager();
