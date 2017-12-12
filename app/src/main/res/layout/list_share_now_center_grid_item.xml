@@ -7,17 +7,15 @@
     android:padding="10dp">
 
     <ImageView
-        android:id="@+id/ic_grid_item"
+        android:id="@+id/square_image"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:layout_margin="5dp"
         android:src="@drawable/math"/>
-
     <TextView
-        android:id="@+id/text_grid_item"
-        android:layout_marginTop="5dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="文字"
-        android:layout_gravity="center"/>
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:text="广场"
+        android:gravity="center"/>
 
 </LinearLayout>

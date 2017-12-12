@@ -19,9 +19,9 @@ import hongzicong.rainbow.R;
 import hongzicong.rainbow.adapter.ShareNowAdapter;
 import hongzicong.rainbow.model.ShareData;
 import hongzicong.rainbow.model.User;
-import hongzicong.rainbow.viewInterface.ShareNowViewInterface;
+import hongzicong.rainbow.viewInterface.RefreshViewInterface;
 
-public class ShareNowFragment extends SwipeRefreshFragment implements ShareNowViewInterface {
+public class ShareNowFragment extends SwipeRefreshFragment implements RefreshViewInterface {
 
     @BindView(R.id.share_now_list)
     RecyclerView mRecyclerView;

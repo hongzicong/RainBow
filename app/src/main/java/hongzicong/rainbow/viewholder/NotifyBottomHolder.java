@@ -37,13 +37,13 @@ public class NotifyBottomHolder extends RecyclerView.ViewHolder implements View.
     TextView mFavourNum;
 
     @BindView(R.id.notify_disfavour)
-    ImageView mDisfavourButton;
+    TextView mDisfavourButton;
 
     @BindView(R.id.notify_collect)
-    ImageView mCollectButton;
+    TextView mCollectButton;
 
     @BindView(R.id.notify_ok)
-    ImageView mOKButton;
+    TextView mOKButton;
 
     private NotifyData mNotifyData;
 

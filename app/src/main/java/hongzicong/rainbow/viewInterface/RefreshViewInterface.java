@@ -8,7 +8,7 @@ import hongzicong.rainbow.model.ShareData;
  * Created by DELL-PC on 2017/12/10.
  */
 
-public interface ShareNowViewInterface extends MVPView {
+public interface RefreshViewInterface extends MVPView {
 
     void refreshList();
 

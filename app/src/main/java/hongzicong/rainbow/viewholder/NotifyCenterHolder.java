@@ -18,7 +18,7 @@ import hongzicong.rainbow.R;
 public class NotifyCenterHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     @BindView(R.id.notify_add_request)
-    Button mAddRequest;
+    ImageView mAddRequest;
 
     public NotifyCenterHolder(LayoutInflater inflater, ViewGroup parent){
         super(inflater.inflate(R.layout.list_notify_center_item,parent,false));

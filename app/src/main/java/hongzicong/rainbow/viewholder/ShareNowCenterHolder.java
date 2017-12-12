@@ -17,18 +17,6 @@ import hongzicong.rainbow.R;
 
 public class ShareNowCenterHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-    @BindView(R.id.question_layout)
-    LinearLayout quesionLayout;
-
-    @BindView(R.id.rank_layout)
-    LinearLayout rankLayout;
-
-    @BindView(R.id.square_layout)
-    LinearLayout squareLayout;
-
-    @BindView(R.id.update_layout)
-    LinearLayout updateLayout;
-
     public ShareNowCenterHolder(LayoutInflater inflater, ViewGroup parent){
         super(inflater.inflate(R.layout.list_share_now_center_item,parent,false));
         ButterKnife.bind(this,itemView);

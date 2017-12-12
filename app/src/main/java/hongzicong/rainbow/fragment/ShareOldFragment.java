@@ -2,14 +2,12 @@ package hongzicong.rainbow.fragment;
 
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,9 +19,9 @@ import hongzicong.rainbow.R;
 import hongzicong.rainbow.adapter.ShareNowAdapter;
 import hongzicong.rainbow.model.ShareData;
 import hongzicong.rainbow.model.User;
-import hongzicong.rainbow.viewInterface.ShareNowViewInterface;
+import hongzicong.rainbow.viewInterface.RefreshViewInterface;
 
-public class ShareOldFragment extends SwipeRefreshFragment implements ShareNowViewInterface {
+public class ShareOldFragment extends SwipeRefreshFragment implements RefreshViewInterface {
 
     @BindView(R.id.share_past_list)
     RecyclerView mRecyclerView;

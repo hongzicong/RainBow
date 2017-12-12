@@ -10,8 +10,16 @@ public class NotifyData {
     private String mIntro;
     private String mTag;
     private String mArticle;
-
     private String mAward;
+
+    public NotifyData(User user, String intro, String tag, String article, String award, int favourNum) {
+        mUser = user;
+        mIntro = intro;
+        mTag = tag;
+        mArticle = article;
+        mAward = award;
+        mFavourNum = favourNum;
+    }
 
     public String getAward() {
         return mAward;
