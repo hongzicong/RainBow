@@ -10,9 +10,11 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,12 +23,18 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import hongzicong.rainbow.R;
+import hongzicong.rainbow.activity.NotifyDetailActivity;
 import hongzicong.rainbow.adapter.NotifyAdapter;
 import hongzicong.rainbow.model.NotifyData;
 import hongzicong.rainbow.model.User;
 import hongzicong.rainbow.viewInterface.RefreshViewInterface;
 
 public class NotifyFragment extends SwipeRefreshFragment implements RefreshViewInterface {
+
+    public static final String EXTRA_NOTIFY_NAME="hongzicong.rainbow.fragment.notify.user_name";
+    public static final String EXTRA_NOTIFY_PICTURE_ID="hongzicong.rainbow.fragment.notify.picture_id";
+    public static final String EXTRA_NOTIFY_AWARD="hongzicong.rainbow.fragment.notify.award";
+    public static final String EXTRA_NOTIFY_ARTICAL="hongzicong.rainbow.fragment.notify.artical";
 
     @BindView(R.id.toolbar_notify)
     Toolbar mToolbar;
@@ -110,13 +118,19 @@ public class NotifyFragment extends SwipeRefreshFragment implements RefreshViewI
     private void initUI(){
         testDataInit();
         mNotifyAdapter=new NotifyAdapter(this,mNotifyDatas);
+        mRecyclerView.setAdapter(mNotifyAdapter);
         mNotifyAdapter.setOnItemClickListener(new NotifyAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                // TODO 转到某一个notifydata的详细页面
+                Log.e("HONGZICONG","1");
+                Intent intent=new Intent(getActivity(),NotifyDetailActivity.class);
+                intent.putExtra(EXTRA_NOTIFY_NAME,mNotifyDatas.get(position-2).getUser().getUserName());
+                intent.putExtra(EXTRA_NOTIFY_ARTICAL,mNotifyDatas.get(position-2).getArticle());
+                intent.putExtra(EXTRA_NOTIFY_AWARD,mNotifyDatas.get(position-2).getAward());
+                intent.putExtra(EXTRA_NOTIFY_PICTURE_ID,mNotifyDatas.get(position-2).getUser().getPictureId());
+                startActivity(intent);
             }
         });
-        mRecyclerView.setAdapter(mNotifyAdapter);
     }
 
 

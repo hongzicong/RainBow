@@ -22,7 +22,7 @@ import hongzicong.rainbow.viewholder.NotifyCenterHolder;
 import hongzicong.rainbow.viewholder.NotifyTopHolder;
 import hongzicong.rainbow.viewholder.ShareNowTopHolder;
 
-public class NotifyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class NotifyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements View.OnClickListener{
 
     private Context mContext;
 
@@ -37,6 +37,7 @@ public class NotifyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         this.mNotifyDatas=notifyDatas;
     }
 
+
     public void setOnItemClickListener(OnItemClickListener onItemClickListener){
         mOnItemClickListener=onItemClickListener;
     }
@@ -47,7 +48,7 @@ public class NotifyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-
+        holder.itemView.setTag(position);
     }
 
     @Override
@@ -71,7 +72,16 @@ public class NotifyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         }
         else{
             View itemView=layoutInflater.inflate(R.layout.list_notify_bottom_item,parent,false);
-            return new NotifyBottomHolder(layoutInflater,parent,mNotifyDatas.get(viewType-2));
+            itemView.setOnClickListener(this);
+            return new NotifyBottomHolder(itemView,mNotifyDatas.get(viewType-2));
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (mOnItemClickListener != null) {
+            //注意这里使用getTag方法获取position
+            mOnItemClickListener.onItemClick(v,(int)v.getTag());
         }
     }
 

@@ -47,8 +47,8 @@ public class NotifyBottomHolder extends RecyclerView.ViewHolder implements View.
 
     private NotifyData mNotifyData;
 
-    public NotifyBottomHolder(LayoutInflater inflater, ViewGroup parent, NotifyData notifyData){
-        super(inflater.inflate(R.layout.list_notify_bottom_item,parent,false));
+    public NotifyBottomHolder(View itemView,NotifyData notifyData){
+        super(itemView);
         ButterKnife.bind(this,itemView);
         mNotifyData=notifyData;
         initNotifyData();
