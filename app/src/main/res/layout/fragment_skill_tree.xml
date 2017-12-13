@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:minHeight="0dp"
 
-            android:background="@color/skill_tree_color"
+            android:background="@color/notify_color"
             app:popupTheme="@style/AppTheme.PopupOverlay"
             android:fitsSystemWindows="true"
             app:layout_scrollFlags="scroll|enterAlways|snap"/>
@@ -30,7 +30,7 @@
             android:id="@+id/tablayout"
             android:layout_width="match_parent"
             android:layout_height="@dimen/tab_height"
-            android:background="@color/skill_tree_color"
+            android:background="@color/notify_color"
             android:layout_gravity="bottom"
             android:fitsSystemWindows="true"></android.support.design.widget.TabLayout>
 

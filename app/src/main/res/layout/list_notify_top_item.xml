@@ -3,16 +3,17 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="210dp"
     android:layout_marginBottom="20dp"
+    android:paddingBottom="10dp"
     android:background="@android:color/white">
 
     <GridView
         android:id="@+id/notify_grid_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:numColumns="auto_fit"
-        android:columnWidth="80dp"
+        android:gravity="center"
+        android:numColumns="3"
         android:stretchMode="columnWidth">
     </GridView>
 

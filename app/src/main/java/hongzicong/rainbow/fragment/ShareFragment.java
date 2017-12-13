@@ -87,6 +87,7 @@ public class ShareFragment extends Fragment {
         mViewPager.addOnPageChangeListener(getPageChangeListener());
         mTabLayout.setupWithViewPager(mViewPager);
         mTabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+        mTabLayout.getTabAt(1).select();
     }
 
 

@@ -8,6 +8,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +29,8 @@ public class NotifyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     private List<NotifyData> mNotifyDatas;
 
     private OnItemClickListener mOnItemClickListener;
+
+    private NotifyTopHolder mNotifyTopHolder;
 
     public NotifyAdapter(Fragment fragment,List<NotifyData> notifyDatas){
         this.mContext=fragment.getContext();
@@ -57,7 +60,10 @@ public class NotifyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         LayoutInflater layoutInflater=LayoutInflater.from(parent.getContext());
         if(viewType==0){
             View itemView=layoutInflater.inflate(R.layout.list_notify_top_item,parent,false);
-            return new NotifyTopHolder(layoutInflater,parent);
+            if(mNotifyTopHolder==null){
+                mNotifyTopHolder=new NotifyTopHolder(layoutInflater,parent);
+            }
+            return mNotifyTopHolder;
         }
         else if(viewType==1){
             View itemView=layoutInflater.inflate(R.layout.list_notify_center_item,parent,false);

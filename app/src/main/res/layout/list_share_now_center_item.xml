@@ -11,8 +11,7 @@
         android:id="@+id/share_now_grid_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:numColumns="auto_fit"
-        android:columnWidth="80dp"
+        android:numColumns="4"
         android:stretchMode="columnWidth">
     </GridView>
 
