@@ -90,7 +90,6 @@ public class ShareFragment extends Fragment {
         mTabLayout.getTabAt(1).select();
     }
 
-
     private ViewPager.OnPageChangeListener getPageChangeListener() {
         return new ViewPager.OnPageChangeListener() {
             @Override

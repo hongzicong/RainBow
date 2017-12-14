@@ -1,4 +1,4 @@
-package hongzicong.rainbow.activity;
+package hongzicong.rainbow.fragment;
 
 import android.app.Dialog;
 import android.content.ContentValues;
@@ -6,63 +6,79 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.Network;
 import android.net.NetworkInfo;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import hongzicong.rainbow.R;
 import hongzicong.rainbow.net.RegisterService;
+import hongzicong.rainbow.utils.UIUtils;
 
+import static hongzicong.rainbow.utils.OtherUtils.isValidName;
+import static hongzicong.rainbow.utils.OtherUtils.isValidPassword;
 
-public class RegisterAcitvity extends AppCompatActivity {
+public class RegisterFragment extends Fragment {
 
-    private EditText name;
-    private EditText password;
-    private Button register;
+    @BindView(R.id.register_name)
+    EditText name;
+
+    @BindView(R.id.register_password)
+    EditText password;
+
+    @BindView(R.id.register_register_button)
+    Button register;
+
     private Handler handler;
     private Dialog dialog;
-    private ActionBar actionBar;
+
+    private Unbinder mUnbinder;
+
+    public static RegisterFragment newInstance() {
+        RegisterFragment fragment = new RegisterFragment();
+        return fragment;
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
-        initWidget();
-        actionBar=getSupportActionBar();
-        if(actionBar!=null){
-            actionBar.hide();
-        }
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View v=inflater.inflate(R.layout.fragment_register,container,false);
+        mUnbinder= ButterKnife.bind(this,v);
+
         setAllClickListener();
+
         handler=new Handler(){
             public void handlerMessage(Message msg){
                 super.handleMessage(msg);
                 dialog.dismiss();
                 if(msg.what==222){
                     if(msg.obj.toString().equals("SUCCESSED")){
-                        Toast.makeText(RegisterAcitvity.this,"注册成功！但是后面的还没做！",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(UIUtils.getContext(),"注册成功！但是后面的还没做！",Toast.LENGTH_SHORT).show();
                     }else{
-                        Toast.makeText(RegisterAcitvity.this,"注册失败，自己看看哪里没写好！！！",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(UIUtils.getContext(),"注册失败，自己看看哪里没写好！！！",Toast.LENGTH_SHORT).show();
                     }
                 }
             }
         };
-    }
 
-    private void initWidget(){
-        name=(EditText)findViewById(R.id.register_name);
-        password=(EditText)findViewById(R.id.register_password);
-        register=(Button)findViewById(R.id.register_register_button);
+        return v;
     }
 
     private void setAllClickListener(){
@@ -70,19 +86,19 @@ public class RegisterAcitvity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(isConnectToInternet()){
-                    if(isValidName()&&isValidPassword()){
-                        dialog=new Dialog(RegisterAcitvity.this);
+                    if(isValidName(name.getText().toString())&&isValidPassword(password.getText().toString())){
+                        dialog=new Dialog(UIUtils.getContext());
                         dialog.setTitle("少女祈祷中...");
                         dialog.setCancelable(false);
                         dialog.show();
                         new RegisterPostThread(name.getText().toString(),password.getText().toString()).start();
                     }
                     else{
-                        Toast.makeText(getApplicationContext(),"请输入合法账号",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(UIUtils.getContext(),"请输入合法账号",Toast.LENGTH_SHORT).show();
                     }
                 }
                 else{
-                    Toast.makeText(getApplicationContext(),"网络未连接",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(UIUtils.getContext(),"网络未连接",Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -120,9 +136,8 @@ public class RegisterAcitvity extends AppCompatActivity {
         }
     }
 
-
     public boolean isConnectToInternet(){
-        ConnectivityManager connectivity = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager connectivity = (ConnectivityManager)getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
         if (connectivity != null) {
             Network[] networks=connectivity.getAllNetworks();
             NetworkInfo networkInfo;
@@ -134,24 +149,6 @@ public class RegisterAcitvity extends AppCompatActivity {
             }
         }
         return false;
-    }
-
-    private boolean isValidName(){
-        String nameStr=name.getText().toString();
-        if(!TextUtils.isEmpty(nameStr)&&isStudentEmail(nameStr)){
-            return true;
-        }
-        return false;
-    }
-
-    private boolean isStudentEmail(String email){
-        //todo
-        return true;
-    }
-
-    private boolean isValidPassword(){
-        //todo
-        return true;
     }
 
 }

@@ -17,7 +17,9 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import hongzicong.rainbow.R;
 import hongzicong.rainbow.adapter.ShareNowAdapter;
+import hongzicong.rainbow.adapter.SharePastAdapter;
 import hongzicong.rainbow.model.ShareData;
+import hongzicong.rainbow.model.SharePastData;
 import hongzicong.rainbow.model.User;
 import hongzicong.rainbow.viewInterface.RefreshViewInterface;
 
@@ -26,8 +28,8 @@ public class ShareOldFragment extends SwipeRefreshFragment implements RefreshVie
     @BindView(R.id.share_past_list)
     RecyclerView mRecyclerView;
 
-    private ShareNowAdapter mShareAdapter;
-    private List<ShareData> mShareDataList;
+    private SharePastAdapter mSharePastAdapter;
+    private List<SharePastData> mSharePastDatas;
 
     private boolean mIsFirstTimeTouchBottom = true;
 
@@ -60,8 +62,8 @@ public class ShareOldFragment extends SwipeRefreshFragment implements RefreshVie
 
     @Override
     public void refreshList() {
-        if (mShareAdapter != null) {
-            mShareAdapter.notifyDataSetChanged();
+        if (mSharePastAdapter != null) {
+            mSharePastAdapter.notifyDataSetChanged();
         }
     }
 
@@ -72,33 +74,18 @@ public class ShareOldFragment extends SwipeRefreshFragment implements RefreshVie
 
     private void initUI(){
         testDataInit();
-        mShareAdapter=new ShareNowAdapter(this,mShareDataList);
-        mShareAdapter.setOnItemClickListener(new ShareNowAdapter.OnItemClickListener() {
+        mSharePastAdapter=new SharePastAdapter(this,mSharePastDatas);
+        mSharePastAdapter.setOnItemClickListener(new ShareNowAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
                 // TODO 转到某一个sharedata的详细页面
             }
         });
-        mRecyclerView.setAdapter(mShareAdapter);
+        mRecyclerView.setAdapter(mSharePastAdapter);
     }
 
     private void testDataInit(){
-        mShareDataList=new ArrayList<>();
-        User userA=new User(1,"TestName",R.drawable.test_avatar,"TestUserIntro");
-        ShareData dataA=new ShareData(userA,"TestTitle","TestTag","TestIntro",1,2);
-        User userB=new User(2,"TestName",R.drawable.test_avatar,"TestUserIntro");
-        ShareData dataB=new ShareData(userB,"TestTitle","TestTag","TestIntro",2,3);
-        User userC=new User(3,"TestName",R.drawable.test_avatar,"TestUserIntro");
-        ShareData dataC=new ShareData(userC,"TestTitle","TestTag","TestIntro",3,4);
-        User userD=new User(4,"TestName",R.drawable.test_avatar,"TestUserIntro");
-        ShareData dataD=new ShareData(userD,"TestTitle","TestTag","TestIntro",4,5);
-        User userE=new User(5,"TestName",R.drawable.test_avatar,"TestUserIntro");
-        ShareData dataE=new ShareData(userE,"TestTitle","TestTag","TestIntro",5,6);
-        mShareDataList.add(dataA);
-        mShareDataList.add(dataB);
-        mShareDataList.add(dataC);
-        mShareDataList.add(dataD);
-        mShareDataList.add(dataE);
+        mSharePastDatas=new ArrayList<>();
     }
 
 
@@ -107,7 +94,7 @@ public class ShareOldFragment extends SwipeRefreshFragment implements RefreshVie
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 int lastItem = linearLayoutManager.findLastCompletelyVisibleItemPosition();
-                int count = mShareAdapter.getItemCount() - 1;
+                int count = mSharePastAdapter.getItemCount() - 1;
                 boolean isBottom = (lastItem == count);
                 if (!mSwipeRefreshLayout.isRefreshing() && isBottom) {
                     if (!mIsFirstTimeTouchBottom) {

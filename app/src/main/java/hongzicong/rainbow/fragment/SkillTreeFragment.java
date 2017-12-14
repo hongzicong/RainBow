@@ -27,10 +27,10 @@ public class SkillTreeFragment extends Fragment {
     ViewPager mViewPager;
 
     @BindView(R.id.tablayout)
-    private TabLayout mTabLayout;
+    TabLayout mTabLayout;
 
     @BindView(R.id.toolbar_skill_tree)
-    private Toolbar toolBar;
+    Toolbar toolBar;
 
     private List<Fragment> mFragments;
     private List<String> mTitles;
