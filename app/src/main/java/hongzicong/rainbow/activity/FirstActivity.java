@@ -27,6 +27,7 @@ import hongzicong.rainbow.fragment.RegisterFragment;
 import hongzicong.rainbow.fragment.ShareFutureFragment;
 import hongzicong.rainbow.fragment.ShareNowFragment;
 import hongzicong.rainbow.fragment.ShareOldFragment;
+import hongzicong.rainbow.utils.ZoomOutPageTransformer;
 
 public class FirstActivity extends AppCompatActivity {
 
@@ -61,6 +62,7 @@ public class FirstActivity extends AppCompatActivity {
         mViewPager.setAdapter(mPagerAdapter);
         mViewPager.addOnPageChangeListener(getPageChangeListener());
 
+        mViewPager.setPageTransformer(true, new ZoomOutPageTransformer());
         mViewPager.setCurrentItem(1);
 
     }
