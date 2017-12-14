@@ -28,8 +28,8 @@ public class ShareNowCenterHolder extends RecyclerView.ViewHolder implements Vie
 
     private List<Map<String,Object>> mMapList;
 
-    private int[] icon={R.drawable.math,R.drawable.math,R.drawable.math,
-            R.drawable.math};
+    private int[] icon={R.drawable.book,R.drawable.data,R.drawable.website,
+            R.drawable.app};
     private String[] iconName={"书籍","资料","网站","App"};
     private SimpleAdapter mSimpleAdapter;
 

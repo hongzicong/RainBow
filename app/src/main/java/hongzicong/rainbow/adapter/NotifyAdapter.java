@@ -4,8 +4,8 @@ package hongzicong.rainbow.adapter;
  * Created by DELL-PC on 2017/12/12.
  */
 
-import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -13,16 +13,25 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.daimajia.swipe.SwipeLayout;
+import com.daimajia.swipe.adapters.RecyclerSwipeAdapter;
+
 import java.util.List;
 
+import butterknife.BindView;
 import hongzicong.rainbow.R;
+import hongzicong.rainbow.activity.RequestDetailActivity;
 import hongzicong.rainbow.model.NotifyData;
 import hongzicong.rainbow.viewholder.NotifyBottomHolder;
 import hongzicong.rainbow.viewholder.NotifyCenterHolder;
 import hongzicong.rainbow.viewholder.NotifyTopHolder;
-import hongzicong.rainbow.viewholder.ShareNowTopHolder;
 
-public class NotifyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements View.OnClickListener{
+import static hongzicong.rainbow.fragment.NotifyFragment.EXTRA_NOTIFY_ARTICAL;
+import static hongzicong.rainbow.fragment.NotifyFragment.EXTRA_NOTIFY_AWARD;
+import static hongzicong.rainbow.fragment.NotifyFragment.EXTRA_NOTIFY_NAME;
+import static hongzicong.rainbow.fragment.NotifyFragment.EXTRA_NOTIFY_PICTURE_ID;
+
+public class NotifyAdapter extends RecyclerSwipeAdapter<RecyclerView.ViewHolder>{
 
     private Context mContext;
 
@@ -57,7 +66,7 @@ public class NotifyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     }
 
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, final int viewType) {
         LayoutInflater layoutInflater=LayoutInflater.from(parent.getContext());
         if(viewType==0){
             View itemView=layoutInflater.inflate(R.layout.list_notify_top_item,parent,false);
@@ -72,16 +81,7 @@ public class NotifyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         }
         else{
             View itemView=layoutInflater.inflate(R.layout.list_notify_bottom_item,parent,false);
-            itemView.setOnClickListener(this);
             return new NotifyBottomHolder(itemView,mNotifyDatas.get(viewType-2));
-        }
-    }
-
-    @Override
-    public void onClick(View v) {
-        if (mOnItemClickListener != null) {
-            //注意这里使用getTag方法获取position
-            mOnItemClickListener.onItemClick(v,(int)v.getTag());
         }
     }
 
@@ -90,4 +90,8 @@ public class NotifyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         return position;
     }
 
+    @Override
+    public int getSwipeLayoutResourceId(int position) {
+        return R.id.notify_list_item_layout;
+    }
 }

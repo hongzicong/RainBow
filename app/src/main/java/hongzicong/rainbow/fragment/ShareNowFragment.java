@@ -38,7 +38,6 @@ public class ShareNowFragment extends SwipeRefreshFragment implements RefreshVie
         return shareNowFragment;
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v=inflater.inflate(R.layout.fragment_share_now,container,false);

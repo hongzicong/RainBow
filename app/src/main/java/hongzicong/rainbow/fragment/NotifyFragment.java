@@ -1,20 +1,18 @@
 package hongzicong.rainbow.fragment;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.AdapterView;
+
+import com.daimajia.swipe.SwipeLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,10 +21,11 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import hongzicong.rainbow.R;
-import hongzicong.rainbow.activity.NotifyDetailActivity;
+import hongzicong.rainbow.activity.RequestDetailActivity;
 import hongzicong.rainbow.adapter.NotifyAdapter;
 import hongzicong.rainbow.model.NotifyData;
 import hongzicong.rainbow.model.User;
+import hongzicong.rainbow.utils.UIUtils;
 import hongzicong.rainbow.viewInterface.RefreshViewInterface;
 
 public class NotifyFragment extends SwipeRefreshFragment implements RefreshViewInterface {
@@ -82,8 +81,6 @@ public class NotifyFragment extends SwipeRefreshFragment implements RefreshViewI
         mUnbinder.unbind();
     }
 
-
-
     private RecyclerView.OnScrollListener getScrollToBottomListener(final LinearLayoutManager linearLayoutManager) {
         return new RecyclerView.OnScrollListener() {
             @Override
@@ -123,7 +120,7 @@ public class NotifyFragment extends SwipeRefreshFragment implements RefreshViewI
             @Override
             public void onItemClick(View view, int position) {
                 Log.e("HONGZICONG","1");
-                Intent intent=new Intent(getActivity(),NotifyDetailActivity.class);
+                Intent intent=new Intent(UIUtils.getContext(),RequestDetailActivity.class);
                 intent.putExtra(EXTRA_NOTIFY_NAME,mNotifyDatas.get(position-2).getUser().getUserName());
                 intent.putExtra(EXTRA_NOTIFY_ARTICAL,mNotifyDatas.get(position-2).getArticle());
                 intent.putExtra(EXTRA_NOTIFY_AWARD,mNotifyDatas.get(position-2).getAward());
@@ -132,8 +129,6 @@ public class NotifyFragment extends SwipeRefreshFragment implements RefreshViewI
             }
         });
     }
-
-
     private void testDataInit(){
         mNotifyDatas=new ArrayList<>();
         User user=new User(1,"TestName",R.drawable.test_avatar,"TestIntro");
