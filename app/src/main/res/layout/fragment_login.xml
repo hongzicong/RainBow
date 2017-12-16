@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="@drawable/register_background"
     android:id="@+id/login_layout"
     android:focusable="true"
     android:focusableInTouchMode="true"
@@ -38,7 +38,7 @@
         android:layout_height="40dp"
         android:text="登陆"
         android:textColor="@android:color/white"
-        android:background="@drawable/round_button"
+        android:background="@drawable/round_button_register"
         android:textSize="18sp"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
@@ -137,7 +137,7 @@
         android:theme="@style/my_edittext"
         app:passwordToggleEnabled="true"
         app:hintTextAppearance="@style/my_textlayout"
-        android:textColorHint="@android:color/white">
+        android:textColorHint="#91989F">
 
         <EditText
             android:id="@+id/password"
@@ -160,7 +160,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
-        android:textColorHint="@android:color/white"
+        android:textColorHint="#91989F"
         android:theme="@style/my_edittext"
         app:hintAnimationEnabled="true"
         app:hintTextAppearance="@style/my_textlayout"

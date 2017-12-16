@@ -7,6 +7,7 @@ import android.net.ConnectivityManager;
 import android.net.Network;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.Fragment;
 import android.os.Handler;
 import android.os.Message;
@@ -33,11 +34,12 @@ import static hongzicong.rainbow.utils.OtherUtils.isValidPassword;
 
 public class RegisterFragment extends Fragment {
 
-    @BindView(R.id.register_name)
-    EditText name;
 
     @BindView(R.id.register_password)
     EditText password;
+
+    @BindView(R.id.register_mail)
+    EditText mail;
 
     @BindView(R.id.register_register_button)
     Button register;
@@ -63,6 +65,7 @@ public class RegisterFragment extends Fragment {
         mUnbinder= ButterKnife.bind(this,v);
 
         setAllClickListener();
+        ((ConstraintLayout)v.findViewById(R.id.register_layout)).setSystemUiVisibility(View.INVISIBLE);
 
         handler=new Handler(){
             public void handlerMessage(Message msg){
@@ -86,12 +89,12 @@ public class RegisterFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if(isConnectToInternet()){
-                    if(isValidName(name.getText().toString())&&isValidPassword(password.getText().toString())){
+                    if(isValidName(mail.getText().toString())&&isValidPassword(password.getText().toString())){
                         dialog=new Dialog(UIUtils.getContext());
                         dialog.setTitle("少女祈祷中...");
                         dialog.setCancelable(false);
                         dialog.show();
-                        new RegisterPostThread(name.getText().toString(),password.getText().toString()).start();
+                        new RegisterPostThread(mail.getText().toString(),password.getText().toString()).start();
                     }
                     else{
                         Toast.makeText(UIUtils.getContext(),"请输入合法账号",Toast.LENGTH_SHORT).show();
