@@ -7,7 +7,10 @@ package hongzicong.rainbow.utils;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Handler;
+import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.RelativeLayout;
 
 import hongzicong.rainbow.activity.BaseApplication;
 
@@ -72,6 +75,14 @@ public class UIUtils {
         WindowManager wm = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
         int width = wm.getDefaultDisplay().getWidth();
         return width;
+    }
+
+    public static void addViewToLayout(RelativeLayout relativeLayout,View view, int x, int y){
+        ViewGroup.MarginLayoutParams margin=new ViewGroup.MarginLayoutParams(view.getLayoutParams());
+        margin.setMargins(x,y, x+margin.width, y+margin.height);
+        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(margin);
+        view.setLayoutParams(layoutParams);
+        relativeLayout.addView(view);
     }
 
 }

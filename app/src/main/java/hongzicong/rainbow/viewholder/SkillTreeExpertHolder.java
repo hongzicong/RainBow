@@ -17,10 +17,7 @@ import hongzicong.rainbow.model.SkillTreeExpertData;
  */
 
 public class SkillTreeExpertHolder extends RecyclerView.ViewHolder  {
-/*
-    @BindView(R.id.skill_tree_expert_detail_intro)
-    TextView mDetailIntro;
-*/
+
     @BindView(R.id.skill_tree_expert_avatar)
     CircleImageView mExpertAvater;
 
@@ -44,7 +41,6 @@ public class SkillTreeExpertHolder extends RecyclerView.ViewHolder  {
         mSwipeLayout.addDrag(SwipeLayout.DragEdge.Right,mSwipeLayout.findViewById(R.id.skill_tree_expert_go_to_detail));
 
         initSkillTreeExpertData();
-
 
 
     }

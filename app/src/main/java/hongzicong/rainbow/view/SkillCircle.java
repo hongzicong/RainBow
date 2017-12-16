@@ -1,4 +1,4 @@
-package hongzicong.rainbow;
+package hongzicong.rainbow.view;
 
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
@@ -9,11 +9,16 @@ import android.view.WindowManager;
 import android.view.Gravity;
 import android.view.ViewConfiguration;
 
+import hongzicong.rainbow.R;
+import hongzicong.rainbow.model.SkillCircleData;
+
 /**
  * Created by DELL-PC on 2017/10/30.
  */
 
 public class SkillCircle extends View implements View.OnTouchListener{
+
+    private SkillCircleData mSkillCircleData;
 
     private int imageId;
     private String name;
@@ -45,6 +50,19 @@ public class SkillCircle extends View implements View.OnTouchListener{
 
     public SkillCircle(Context context) {
         this(context, null);
+    }
+
+    //一定要调用，到时重构要改一改
+    public void setSkillCircleData(SkillCircleData skillCircleData){
+        mSkillCircleData=skillCircleData;
+    }
+
+    public int getXInPool(){
+        return mSkillCircleData.getX();
+    }
+
+    public int getYInPool(){
+        return mSkillCircleData.getY();
     }
 
     private void initContext(Context context){

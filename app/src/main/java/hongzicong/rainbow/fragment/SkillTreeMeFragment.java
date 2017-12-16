@@ -29,7 +29,7 @@ public class SkillTreeMeFragment extends SwipeRefreshFragment implements Refresh
     RecyclerView mRecyclerView;
 
     private SkillTreeMeAdapter mSkillTreeMeAdapter;
-    private List<SkillTreeMeData> mSkillTreeMeDatas;
+    private SkillTreeMeData mSkillTreeMeData;
 
     private boolean mIsFirstTimeTouchBottom = true;
 
@@ -50,11 +50,13 @@ public class SkillTreeMeFragment extends SwipeRefreshFragment implements Refresh
     }
 
     private void initUI(){
-
+        testDataInit();
+        mSkillTreeMeAdapter=new SkillTreeMeAdapter(this,mSkillTreeMeData);
+        mRecyclerView.setAdapter(mSkillTreeMeAdapter);
     }
 
     private void testDataInit(){
-        mSkillTreeMeDatas=new ArrayList<>();
+        mSkillTreeMeData=new SkillTreeMeData();
 
     }
 
