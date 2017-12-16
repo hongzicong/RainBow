@@ -21,4 +21,6 @@
 
     <color name="background">#EBEBEB</color>
 
+    <color name="expert_detail_background">#58B2DC</color>
+
 </resources>

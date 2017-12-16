@@ -88,7 +88,7 @@ public class HomeActivity extends AppCompatActivity {
     protected void initBottomNavigationBar(){
         bottomNavigationBar.setMode(BottomNavigationBar.MODE_FIXED);
         bottomNavigationBar.setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC);
-        bottomNavigationBar.addItem(new BottomNavigationItem(R.drawable.share_icon,"首页").setActiveColorResource(R.color.share_color))
+        bottomNavigationBar.addItem(new BottomNavigationItem(R.drawable.share_icon,"分享").setActiveColorResource(R.color.share_color))
                 .addItem(new BottomNavigationItem(R.drawable.skill_tree_icon,"技能树").setActiveColorResource(R.color.skill_tree_color))
                 .addItem(new BottomNavigationItem(R.drawable.notifi_icon,"通知").setActiveColorResource(R.color.notify_color))
                 .setFirstSelectedPosition(1)

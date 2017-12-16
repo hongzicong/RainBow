@@ -16,7 +16,9 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import hongzicong.rainbow.R;
 import hongzicong.rainbow.adapter.SkillTreeExpertAdapter;
+import hongzicong.rainbow.model.SkillTreeData;
 import hongzicong.rainbow.model.SkillTreeExpertData;
+import hongzicong.rainbow.model.User;
 import hongzicong.rainbow.viewInterface.RefreshViewInterface;
 
 /**
@@ -50,12 +52,24 @@ public class SkillTreeExpertFragment extends SwipeRefreshFragment implements Ref
     }
 
     private void initUI(){
-        mSkillTreeExpertDatas=new ArrayList<>();
+        testDataInit();
+        mSkillTreeExpertAdapter=new SkillTreeExpertAdapter(this,mSkillTreeExpertDatas);
+        mRecyclerView.setAdapter(mSkillTreeExpertAdapter);
     }
 
     private void testDataInit(){
         mSkillTreeExpertDatas=new ArrayList<>();
-
+        User userA=new User(1,"TestName",R.drawable.test_avatar,"TestUserIntro");
+        SkillTreeExpertData skillTreeExpertData=new SkillTreeExpertData("TestIntro1",userA,new SkillTreeData(),"TestArticle1");
+        mSkillTreeExpertDatas.add(skillTreeExpertData);
+        skillTreeExpertData=new SkillTreeExpertData("TestIntro2",userA,new SkillTreeData(),"TestArticle2");
+        mSkillTreeExpertDatas.add(skillTreeExpertData);
+        skillTreeExpertData=new SkillTreeExpertData("TestIntro3",userA,new SkillTreeData(),"TestArticle3");
+        mSkillTreeExpertDatas.add(skillTreeExpertData);
+        skillTreeExpertData=new SkillTreeExpertData("TestIntro4",userA,new SkillTreeData(),"TestArticle4");
+        mSkillTreeExpertDatas.add(skillTreeExpertData);
+        skillTreeExpertData=new SkillTreeExpertData("TestIntro5",userA,new SkillTreeData(),"TestArticle5");
+        mSkillTreeExpertDatas.add(skillTreeExpertData);
     }
 
     @Override

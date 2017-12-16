@@ -94,4 +94,5 @@ public class NotifyAdapter extends RecyclerSwipeAdapter<RecyclerView.ViewHolder>
     public int getSwipeLayoutResourceId(int position) {
         return R.id.notify_list_item_layout;
     }
+
 }
